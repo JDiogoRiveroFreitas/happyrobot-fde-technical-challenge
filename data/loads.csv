@@ -1,0 +1,11 @@
+load_id,origin,destination,pickup_datetime,delivery_datetime,equipment_type,loadboard_rate,notes,weight,commodity_type,num_of_pieces,miles,dimensions
+L001,Chicago,New York,2025-11-13T09:00,2025-11-15T18:00,Reefer,2500,Fragile goods,10000,Pharmaceuticals,500,790,2.5x2.3x10
+L002,Dallas,Los Angeles,2025-11-14T07:30,2025-11-16T20:00,Flatbed,2100,Requires tarp,12000,Construction Materials,300,1430,2.4x2.4x12
+L003,Miami,Atlanta,2025-11-13T08:00,2025-11-14T17:00,Dry Van,1600,Urgent delivery,8000,Food,250,660,2.2x2.1x8
+L004,Denver,Houston,2025-11-15T10:00,2025-11-17T12:00,Reefer,2300,Temperature controlled,9500,Produce,400,1020,2.3x2.3x9
+L005,Seattle,San Francisco,2025-11-16T09:00,2025-11-18T22:00,Flatbed,2000,Oversized cargo,11000,Equipment,200,810,2.5x2.5x11
+L006,Phoenix,Las Vegas,2025-11-13T13:30,2025-11-13T21:00,Dry Van,900,Same-day delivery,5000,Electronics,120,300,2.0x2.0x6
+L007,Boston,Philadelphia,2025-11-14T06:00,2025-11-14T14:00,Dry Van,1100,No lumper,7000,Textiles,180,310,2.1x2.0x7
+L008,Kansas City,Oklahoma City,2025-11-15T07:00,2025-11-15T19:00,Flatbed,1200,Straps required,13000,Steel Coils,20,350,2.6x2.5x9
+L009,Nashville,Chicago,2025-11-13T10:00,2025-11-14T08:00,Reefer,1500,Night delivery,8500,Dairy,220,470,2.3x2.2x8
+L010,Portland,Boise,2025-11-16T05:00,2025-11-16T18:00,Dry Van,950,Live load/unload,6000,Paper Goods,150,430,2.1x2.1x7
