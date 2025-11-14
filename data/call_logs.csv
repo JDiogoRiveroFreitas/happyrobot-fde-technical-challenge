@@ -1,0 +1,3 @@
+call_id,happyrobot_run_id,started_at,ended_at,duration_seconds,mc_number,load_id,origin,destination,pickup_datetime,delivery_datetime,equipment_type,listed_rate,proposed_rate,final_rate,negotiation_rounds,eligible,outcome,sentiment,notes,transcript,logged_at
+,,,,,123456,,,,,,,,,,,,booked_load,,,,2025-11-14T21:24:31.345478
+,,,,,123456,LOAD01,"Dallas, TX","Houston, TX",2025-05-10 14:00:00,,Dry Van,2500.0,2200.0,,2,True,booked_load,positive,Carrier was friendly.,,2025-11-14T21:24:53.257906
