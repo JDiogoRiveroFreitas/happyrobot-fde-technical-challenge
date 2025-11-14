@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, Union
 from datetime import datetime
 
 class LoadMatch(BaseModel):
@@ -55,36 +55,35 @@ class CarrierVerificationResponse(BaseModel):
     raw_fmcsa_response: Optional[dict] = None
     
 class CallLogPayload(BaseModel):
-  """
-  Payload received from HappyRobot at the end of the call.
-  You can adjust fields to match exactly what you POST from the platform.
-  """
+    """
+    Payload received from HappyRobot at the end of the call.
+    You can adjust fields to match exactly what you POST from the platform.
+    """
 
-  # Call meta
-  call_id: Optional[str] = None
-  happyrobot_run_id: Optional[str] = None
-  started_at: Optional[datetime] = None
-  ended_at: Optional[datetime] = None
-  duration_seconds: Optional[int] = None
+    # Call meta
+    call_id: Optional[str] = None
+    happyrobot_run_id: Optional[str] = None
+    started_at: Optional[datetime] = None
+    ended_at: Optional[datetime] = None
+    duration_seconds: Optional[int] = None
 
-  # Core business fields (from AI Extract)
-  mc_number: Optional[str] = None
-  load_id: Optional[str] = None
-  origin: Optional[str] = None
-  destination: Optional[str] = None
-  pickup_datetime: Optional[datetime] = None
-  delivery_datetime: Optional[datetime] = None
-  equipment_type: Optional[str] = None
-  listed_rate: Optional[float] = None      # loadboard_rate
-  proposed_rate: Optional[float] = None    # last offer from carrier
-  final_rate: Optional[float] = None       # agreed rate (if any)
-  negotiation_rounds: Optional[int] = None
-  eligible: Optional[bool] = None
+    # Core business fields (from AI Extract)
+    mc_number: Optional[Union[str, int]] = None
+    load_id: Optional[str] = None
+    origin: Optional[str] = None
+    destination: Optional[str] = None
+    pickup_datetime: Optional[datetime] = None
+    delivery_datetime: Optional[datetime] = None
+    equipment_type: Optional[str] = None
+    listed_rate: Optional[float] = None      # loadboard_rate
+    proposed_rate: Optional[float] = None    # last offer from carrier
+    final_rate: Optional[float] = None       # agreed rate (if any)
+    negotiation_rounds: Optional[int] = None
+    eligible: Optional[bool] = None
 
-  # AI Classification
-  outcome: Optional[str] = None     # e.g. booked_load, no_match, not_interested, ...
-  sentiment: Optional[str] = None   # e.g. very_negative ... very_positive
+    # AI Classification
+    outcome: Optional[str] = None     # e.g. booked_load, no_match, not_interested, ...
+    sentiment: Optional[str] = None   # e.g. very_negative ... very_positive
 
-  # Extra
-  notes: Optional[str] = None
-  transcript: Optional[str] = None  # full call transcript if you want it
+    # Extra
+    notes: Optional[str] = None
