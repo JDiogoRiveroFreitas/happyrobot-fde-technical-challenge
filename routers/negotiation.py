@@ -40,17 +40,25 @@ def evaluate_offer(
     decision: Literal["accept", "counter", "reject"]
     counter_offer: Optional[float] = None
 
-    if proposed >= 0.97 * anchor_rate:
+    # Carrier is asking at or below our target -> best for us -> accept immediately
+    if proposed <= anchor_rate:
         decision = "accept"
-        comment = "We accept your offer."
-    elif proposed >= 0.90 * anchor_rate:
+        counter_offer = None
+        comment = "We can work with that rate."
+
+    # Carrier is slightly above our target (up to +10%) -> reasonable -> counter down to anchor
+    elif proposed <= anchor_rate * 1.10:
         decision = "counter"
-        counter_offer = round(anchor_rate * 0.98, 2)
-        comment = "Your offer is close. Can we meet in the middle?"
+        # Never offer more than what the carrier asked, and never exceed our anchor
+        counter_offer = round(min(proposed, anchor_rate), 2)
+        comment = "You're slightly above our target. Could you meet our target rate?"
+
+    # Carrier is far above market -> reject or counter with a firm lower offer
     else:
         decision = "reject"
-        counter_offer = round(anchor_rate * 0.95, 2)
-        comment = "Your offer is too low. This would be our best price."
+        # small concession (96% of anchor) to show our best realistic rate
+        counter_offer = round(anchor_rate * 0.96, 2)
+        comment = "Your offer is too high for this lane. This would be our best rate."
 
     return OfferEvaluationResponse(
         load_id=str(payload.load_id),
