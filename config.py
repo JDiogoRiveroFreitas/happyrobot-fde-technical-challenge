@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from datetime import datetime
 
-API_KEY = os.getenv("INBOUND_API_KEY")
+API_KEY = os.getenv("BACKEND_API_KEY")
 FMCSA_API_KEY = os.getenv("FMCSA_API_KEY")
 
 df = pd.read_csv("data/loads.csv")
