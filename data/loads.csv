@@ -9,3 +9,18 @@ L007,Boston,Philadelphia,2025-11-14T06:00,2025-11-14T14:00,Dry Van,1100,No lumpe
 L008,Kansas City,Oklahoma City,2025-11-15T07:00,2025-11-15T19:00,Flatbed,1200,Straps required,13000,Steel Coils,20,350,2.6x2.5x9
 L009,Nashville,Chicago,2025-11-13T10:00,2025-11-14T08:00,Reefer,1500,Night delivery,8500,Dairy,220,470,2.3x2.2x8
 L010,Portland,Boise,2025-11-16T05:00,2025-11-16T18:00,Dry Van,950,Live load/unload,6000,Paper Goods,150,430,2.1x2.1x7
+L011,New York,Denver,2025-11-17T06:00,2025-11-18T20:00,Dry Van,2400,High value electronics,9000,Electronics,320,1780,2.3x2.3x10
+L012,Houston,Dallas,2025-11-17T09:00,2025-11-17T18:00,Flatbed,850,Short haul regional,11500,Steel,40,240,2.6x2.5x9
+L013,San Diego,Phoenix,2025-11-18T07:00,2025-11-18T19:00,Reefer,1400,Temperature sensitive food,8000,Frozen Food,260,355,2.3x2.2x8
+L014,Oakland,Portland,2025-11-18T08:30,2025-11-19T10:30,Dry Van,1500,Drop and hook,7000,Consumer Goods,210,635,2.4x2.3x9
+L015,El Paso,Denver,2025-11-19T05:00,2025-11-19T20:00,Flatbed,1600,Coils with chains,12500,Steel Coils,30,640,2.6x2.5x10
+L016,Orlando,Atlanta,2025-11-19T09:00,2025-11-19T19:00,Dry Van,1200,No weekend delivery,6500,Food & Beverage,230,440,2.2x2.1x8
+L017,Minneapolis,Chicago,2025-11-20T06:30,2025-11-20T15:30,Reefer,1350,Grocery load,9000,Produce,280,410,2.3x2.3x8
+L018,Detroit,Dallas,2025-11-20T07:00,2025-11-21T12:00,Dry Van,1900,Drop trailer allowed,9500,Automotive Parts,190,1020,2.3x2.2x9
+L019,Salt Lake City,Los Angeles,2025-11-21T05:30,2025-11-21T20:00,Flatbed,1700,Racks and frames,11000,Industrial Equipment,70,690,2.5x2.4x11
+L020,San Antonio,Houston,2025-11-21T09:00,2025-11-21T17:00,Dry Van,800,Same day reload,6000,Paper Goods,200,210,2.1x2.1x7
+L021,Charlotte,Nashville,2025-11-22T06:00,2025-11-22T18:00,Dry Van,1300,Driver assist,7000,Textiles,240,410,2.2x2.1x8
+L022,Memphis,Chicago,2025-11-22T07:30,2025-11-23T05:30,Reefer,1450,Overnight run,8500,Meat,260,530,2.3x2.2x8
+L023,Columbus,Boston,2025-11-23T06:00,2025-11-23T22:00,Dry Van,1800,Appointment required,8000,Pharmaceuticals,300,730,2.3x2.2x9
+L024,Baltimore,Newark,2025-11-23T08:00,2025-11-23T18:00,Dry Van,900,Port load,6500,Import Goods,210,190,2.2x2.1x7
+L025,Sacramento,Seattle,2025-11-24T07:00,2025-11-25T01:00,Flatbed,1900,Lumber load,12000,Lumber,150,760,2.5x2.4x12
