@@ -26,11 +26,8 @@ st.caption("HappyRobot – Technical Challenge Dashboard")
 #   Configuration (Railway + local)
 # ============================================================
 
-# Default is API mode for Railway, but can be overridden via env var
-DEFAULT_DATA_SOURCE: Literal["csv", "api"] = os.getenv(
-    "CALL_LOG_SOURCE",
-    "api"
-)
+# Default is API mode for Railway
+DEFAULT_DATA_SOURCE: Literal["csv", "api"] = "api"
 
 # Local fallback CSV (only for dev)
 DEFAULT_CSV_PATH = "data/call_logs_500.csv"
@@ -332,15 +329,13 @@ def compute_calls_by_hour(df: pd.DataFrame) -> pd.DataFrame:
 # ============================================================
 
 @st.cache_data(show_spinner=True)
-def load_and_preprocess(
-    source: str = DEFAULT_DATA_SOURCE,
-) -> pd.DataFrame:
+def load_and_preprocess():
     df_raw = load_call_log(
-        source,
+        "csv",
         DEFAULT_CSV_PATH,
         DEFAULT_CALL_LOG_API_URL,
         "x-api-key",
-        ""
+        " "
     )
     return preprocess_call_log(df_raw)
 
