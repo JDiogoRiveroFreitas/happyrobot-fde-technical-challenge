@@ -32,11 +32,13 @@ def search_loads(
     # Base matching
     subset = df[
         (df["origin"].str.lower() == payload.origin.lower()) &
-        (df["destination"].str.lower() == payload.destination.lower()) &
         (df["equipment_type"].str.lower() == payload.equipment_type.lower())
     ]
 
     # Optional filters
+    if payload.destination is not None and "destination" in subset.columns:
+        subset = subset[subset["destination"] == payload.destination]
+    
     if payload.min_rate is not None and "loadboard_rate" in subset.columns:
         subset = subset[subset["loadboard_rate"] >= payload.min_rate]
 
