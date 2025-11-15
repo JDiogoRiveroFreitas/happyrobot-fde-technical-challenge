@@ -31,7 +31,7 @@ def log_call(
     """
 
     # Save to CSV (persistent call log)
-    csv_path = BASE_DIR / "data" / "call_logs.csv"
+    csv_path = BASE_DIR / "data" / "call_logs_500.csv"
     csv_path.parent.mkdir(exist_ok=True)
 
     # Debug log to confirm the function is being called and path used
@@ -69,7 +69,7 @@ def get_call_log_historic(
     Returns the historic call logs stored in data/call_logs_100.csv.
     This is mainly used by the dashboard for analytics.
     """
-    csv_path = BASE_DIR / "data" / "call_logs_100.csv"
+    csv_path = BASE_DIR / "data" / "call_logs_500.csv"
 
     if not csv_path.exists():
         raise RuntimeError(f"CSV file not found at path: {csv_path}")
