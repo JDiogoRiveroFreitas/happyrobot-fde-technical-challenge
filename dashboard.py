@@ -386,7 +386,8 @@ if "outcome" in df_calls.columns:
     selected_outcomes = st.sidebar.multiselect(
         "Outcome",
         options=outcome_options,
-        default=[]
+        default=[],
+        format_func=lambda v: v.replace("_", " ")
     )
 else:
     selected_outcomes = None
@@ -397,7 +398,8 @@ if "sentiment" in df_calls.columns:
     selected_sentiments = st.sidebar.multiselect(
         "Sentiment",
         options=sentiment_options,
-        default=[]
+        default=[],
+        format_func=lambda v: v.replace("_", " ")
     )
 else:
     selected_sentiments = None
@@ -579,24 +581,9 @@ if "discount_pct" in df_calls.columns and booked_mask.any():
         .reset_index()
     )
     discount_by_sentiment["discount_pct"] *= 100.0
+    discount_by_sentiment["sentiment"] = discount_by_sentiment["sentiment"].astype(str).str.replace("_", " ")
 else:
     discount_by_sentiment = pd.DataFrame(columns=["sentiment", "discount_pct"])
-
-# Data quality for extracted fields
-fields_to_check = ["load_id", "pickup_datetime", "delivery_datetime", "equipment_type"]
-quality_rows = []
-for col in fields_to_check:
-    if col in df_calls.columns:
-        total_q = len(df_calls)
-        non_null_q = df_calls[col].notna().sum()
-        quality_rows.append({
-            "field": col,
-            "filled_pct": 100.0 * non_null_q / total_q
-        })
-if quality_rows:
-    quality_df = pd.DataFrame(quality_rows)
-else:
-    quality_df = pd.DataFrame(columns=["field", "filled_pct"])
 
 # Carrier performance (top 5 by volume)
 if "mc_number" in df_calls.columns:
@@ -666,7 +653,7 @@ with colA:
     fig_out.update_traces(
         text=outcome_summary["outcome_label"],
         textposition="inside",
-        texttemplate="%{text}<br>%{value:.1f}%%"
+        texttemplate="%{text}<br>%{value:.1f}%"
     )
     fig_out.update_layout(showlegend=False)
     st.plotly_chart(fig_out, use_container_width=True)
@@ -683,7 +670,7 @@ with colB:
     fig_sent.update_traces(
         text=sentiment_summary["sentiment_label"],
         textposition="inside",
-        texttemplate="%{text}<br>%{value:.1f}%%"
+        texttemplate="%{text}<br>%{value:.1f}%"
     )
     fig_sent.update_layout(showlegend=False)
     st.plotly_chart(fig_sent, use_container_width=True)
@@ -834,12 +821,6 @@ if discount_by_sentiment is not None and not discount_by_sentiment.empty:
 else:
     st.info("No discount data available for booked loads.")
 
-# Data quality section
-st.subheader("Data Quality (Extracted Fields)")
-if quality_df is not None and not quality_df.empty:
-    st.dataframe(quality_df, use_container_width=True)
-else:
-    st.info("No data quality information available.")
 
 # Top carriers
 st.subheader("Top 5 Carriers by Call Volume")
