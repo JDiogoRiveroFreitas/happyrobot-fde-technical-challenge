@@ -57,3 +57,28 @@ def log_call(
         "status": "ok",
         "message": "Call log stored successfully"
     }
+    
+@router.get(
+    "/historic",
+    summary="Return historic call logs from local CSV"
+)
+def get_call_log_historic(
+    _: None = Depends(verify_api_key)
+) -> list[dict]:
+    """
+    Returns the historic call logs stored in data/call_logs_100.csv.
+    This is mainly used by the dashboard for analytics.
+    """
+    csv_path = BASE_DIR / "data" / "call_logs_100.csv"
+
+    if not csv_path.exists():
+        raise RuntimeError(f"CSV file not found at path: {csv_path}")
+
+    rows: list[dict] = []
+
+    with open(csv_path, "r", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            rows.append(row)
+
+    return rows
