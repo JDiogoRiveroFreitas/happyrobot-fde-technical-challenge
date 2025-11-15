@@ -36,8 +36,9 @@ def search_loads(
     ]
 
     # Optional filters
-    if payload.destination is not None and "destination" in subset.columns:
-        subset = subset[subset["destination"] == payload.destination]
+    dest = (payload.destination or "").strip()
+    if dest and "destination" in subset.columns:
+        subset = subset[subset["destination"].str.lower() == payload.destination.lower()]
     
     if payload.min_rate is not None and "loadboard_rate" in subset.columns:
         subset = subset[subset["loadboard_rate"] >= payload.min_rate]
